@@ -1,0 +1,5 @@
+#* Use the following command to install the necessary libraries for this project:
+#* pip install -r requirements.txt
+
+pandas
+numpy
