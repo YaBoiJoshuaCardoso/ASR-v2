@@ -27,5 +27,5 @@ def main(file_path, preferred_lunch):
 if __name__ == "__main__":
     file_path = sys.argv[1]
     preferred_lunch = list(map(int, sys.argv[2].split(',')))
-    schedule_json = main(file_path)
+    schedule_json = main(file_path, preferred_lunch)
     print(schedule_json)  # This will be captured by the Node.js server
