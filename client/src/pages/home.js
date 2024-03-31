@@ -24,6 +24,14 @@ function Home() {
 
   const handleCheckboxUpload = (e) => {
     const { checked, value } = e.target;
+    const newLunchPeriods = checked 
+        ? [...formData.lunchPeriods, value]
+        : formData.lunchPeriods.filter((v) => v !== value);
+
+    console.log("Checkbox value:", value, "Checked:", checked);
+    console.log("Updated lunch periods:", newLunchPeriods);
+
+//requesto to Form
     setFormData({
       ...formData,
       lunchPeriods: checked 
@@ -87,65 +95,51 @@ function Home() {
                         </select>
                     </div>
                 </div>    
-                <div className="Paramaters">
-                    <div className="lunch">
-                        <div className="Lunch-checkboxs">
-                            <h3>Possible Lunch Periods:</h3>
-                            <label htmlFor="Period1">
-                                <input type="checkbox" id="Period1" name="lunch_periods" value="1" onChange={handleCheckboxUpload} />
-                                Period: 1
-                            </label>
-                            <label htmlFor="Period2">
-                                <input type="checkbox" id="Period2" name="lunch_periods" value="2" onChange={handleCheckboxUpload} />
-                                Period: 2
-                            </label>
-                            <label htmlFor="Period3">
-                                <input type="checkbox" id="Period3" name="lunch_periods" value="3" onChange={handleCheckboxUpload} />
-                                Period: 3
-                            </label>
-                            <label htmlFor="Period4">
-                                <input type="checkbox" id="Period4" name="lunch_periods" value="4" onChange={handleCheckboxUpload} />
-                                Period: 4
-                            </label>
-                            <label htmlFor="Period5">
-                                <input type="checkbox" id="Period5" name="lunch_periods" value="5" onChange={handleCheckboxUpload} />
-                                Period: 5
-                            </label>
-                            <label htmlFor="Period6">
-                                <input type="checkbox" id="Period6" name="lunch_periods" value="6" onChange={handleCheckboxUpload} />
-                                Period: 6
-                            </label>
-                            <label htmlFor="Period7">
-                                <input type="checkbox" id="Period7" name="lunch_periods" value="7" onChange={handleCheckboxUpload} />
-                                Period: 7
-                            </label>
+                <div className="lunch">
+                  <h3>Possible Lunch Periods:</h3>
+                  <div className="Lunch-checkboxs">
+                    {Array.from({ length: 7 }, (_, i) => i + 1).map(period => {
+                      const periodValue = period.toString();
+                      return (
+                        <div key={periodValue} className="checkbox-wrapper">
+                          <input
+                            type="checkbox"
+                            id={`Period${periodValue}`}
+                            name="lunch_periods"
+                            value={periodValue}
+                            checked={formData.lunchPeriods.includes(periodValue)}
+                            onChange={handleCheckboxUpload}
+                          />
+                          <label htmlFor={`Period${periodValue}`}>Period: {periodValue}</label>
                         </div>
-                    </div>
+                      );
+                    })}
+                  </div>
                 </div>
-          <div className="form-submit">
-            <button type="submit" className="submit-btn">
-              Upload
-            </button>
-          </div>
-        </form>
-      </div>
-      {isLoading && (
-        <div className="loader-overlay">
-          <div className="terminal-loader">
-            <div className="terminal-header">
-              <div className="terminal-title">Status</div>
-              <div className="terminal-controls">
-                <div className="control close"></div>
-                <div className="control minimize"></div>
-                <div className="control maximize"></div>
-              </div>
+                <div className="form-submit">
+                  <button type="submit" className="submit-btn">
+                    Upload
+                  </button>
+                </div>
+              </form>
             </div>
-            <div className="text">Loading...</div>
-          </div>
-        </div>
-      )}
-    </main>
-  );
-}
+            {isLoading && (
+              <div className="loader-overlay">
+                <div className="terminal-loader">
+                  <div className="terminal-header">
+                    <div className="terminal-title">Status</div>
+                    <div className="terminal-controls">
+                      <div className="control close"></div>
+                      <div className="control minimize"></div>
+                      <div className="control maximize"></div>
+                    </div>
+                  </div>
+                  <div className="text">Loading...</div>
+                </div>
+              </div>
+            )}
+          </main>
+        );
+      }
 
-export default Home;
+      export default Home;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/timetable.css';
 
 function Timetable() {
     const [scheduleData, setScheduleData] = useState([]);

@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
+    background-color: #f0f8ff; /* Light background for a fresh look */
+    color: #333; /* High-contrast text for readability */
     margin: 0;
     padding: 0;
     display: flex;
@@ -14,103 +14,220 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: #2C3E50; /* Darker header for better focus on content */
+    color: #fff; /* White text for contrast */
     padding: 10px;
     z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly deeper shadow for depth */
 }
 
 .header-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Adjusted for potential additional navigation items */
     align-items: center;
 }
 
 main {
-    margin-top: 60px;
-    width: 80%;
-    max-width: 600px;
-    margin: auto;
+    margin-top: 80px; /* Adjusted to accommodate fixed header */
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for a gentle "floating" effect */
     border-radius: 8px;
+    width: 90%; /* Slightly wider for more space */
+    max-width: 800px; /* Larger max width for better layout on wider screens */
+    margin-left: auto;
+    margin-right: auto; /* Centering main content */
 }
 
 .title {
     text-align: center;
-    color: #333;
-    margin-bottom: 10px;
+    color: #2C3E50; /* Dark blue for title for consistency with header */
+    margin-bottom: 20px; /* More space above form for visual separation */
 }
 
 .form-container {
-    width: 100%;
-}
-
-.align-vertical{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+    flex-direction: column; /* Stack form elements vertically for clarity */
 }
 
-.Can-Not {
-    margin-top: 15px;
+.align-vertical {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 15px;
+    gap: 10px; /* Adds space between elements */
+}
+
+/* Individual sections within .align-vertical could have a smaller width */
+.Can-Not {
+    width: 80%; /* Makes the select boxes smaller */
+    margin: 0 auto; /* Centers the select boxes */
+}
+
+.Can-Not .form-input, .Can-Not .form-select {
+    width: calc(100% - 20px); /* Full width within the .Can-Not container, accounting for padding */
+}
+
+/* Adds visual grouping for related elements */
+.Can-Not:first-child {
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: 2px solid #ccc; /* Visual separator from other sections */
+}
+
+.Can-Not:last-child {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc; /* Visual separator from other sections */
+}
+
+/* Additional styles to visually connect related elements */
+.Can-Not:not(:last-child) {
+    border-bottom: 1px dashed #ccc; /* Dashed line to indicate connection between the elements */
+}
+
+/* Styling for the labels within the .align-vertical to associate them more clearly */
+.align-vertical .form-label {
+    font-size: 0.9em; /* Slightly smaller label size */
+    text-align: center; /* Center align the labels */
+    color: #666; /* Lighter color to distinguish from main form labels */
+}
+
+
+.lunch {
+    margin-top: 15px; /* Adds space above the lunch periods for separation */
+}
+
+
+.lunch .Lunch-checkboxs {
+    gap: 10px;
+    margin-top: 10px; /* Space from the title to the first row of checkboxes */
+    justify-content: center;
+    padding-left: 0; /* Align checkboxes with the title text */
+}
+
+.lunch .Lunch-checkboxs label {
     display: flex;
     align-items: center;
-    flex-wrap: nowrap;
+    justify-content: center;
+    min-height: 40px; /* Define a minimum height for larger click area */
+    background: #ffffff;
+    color: #333;
+    border: 2px solid #ddd;
+    padding: 5px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.lunch .Lunch-checkboxs input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.lunch .Lunch-checkboxs input[type="checkbox"]:checked + label {
+    background-color: #3498DB;
+    color: #fff;
+}
+
+.lunch input[type="checkbox"]:checked + label {
+    border-color: #2980B9; /* Border color for checked state */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Enhanced inner shadow for depth */
+}
+
+.lunch .Lunch-checkboxs input[type="checkbox"]:checked + label::before {
+    display: inline-block;
+    margin-right: 8px;
+    color: #fff;
+}
+
+.lunch label {
+    background: #fff;
+    border: 2px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    user-select: none; /* Prevents text selection */
+    cursor: pointer;
+}
+
+/* Hide the actual checkbox but make it accessible for screen readers */
+.lunch input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* Hover effect for the label */
+.lunch label:hover {
+    background-color: #ECF5FD; /* Slightly darker background on hover */
+    border-color: #AED6F1; /* Darker border on hover */
 }
 
 .form-label {
     display: block;
     margin-bottom: 5px;
-    margin-right: 5px;
+    color: #2C3E50; /* Dark blue for readability and visual consistency */
     font-weight: bold;
-    color: #555;
 }
 
-.form-input {
-    width: auto;
-    padding: 8px 15px;
+.form-input, .form-select {
+    padding: 10px 15px;
     font-size: 16px;
-    border: 1px solid #ddd;
     border-radius: 4px;
-    margin-right: 10px;
-}
-
-@media screen and (max-width: 768px) { /* Adjusts layout for smaller screens */
-    .Can-Not {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .form-label, .form-input {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 5px;
-    }
+    border: 1px solid #ccc; /* Lighter border for less visual weight */
+    width: 100%; /* Full width inputs for easier interaction */
+    margin-bottom: 10px; /* Space between inputs */
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 10px;
+    padding: 12px;
+    background-color: #3498DB; /* Brighter blue for a more inviting call to action */
+    color: #ffffff;
     font-size: 18px;
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
 }
 
 .submit-btn:hover {
-    background-color: #0056b3;
+    background-color: #2980B9; /* Slightly darker on hover for feedback */
 }
 
-.info-text {
-    font-size: 14px;
-    margin-top: 10px;
-    color: #777;
+.loader-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay to focus attention on loader */
+}
+
+.terminal-loader .text {
+    color: #fff; /* Ensure loader text is visible on overlay */
+}
+
+@media screen and (max-width: 768px) {
+    .align-vertical, .Can-Not {
+        flex-direction: column;
+    }
+
+    .Can-Not {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .align-vertical .form-label {
+        text-align: left; /* Align labels to the left on smaller screens */
+    }
+    
+    .lunch .Lunch-checkboxs {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); 
+        padding-left: 0;
+    }
 }
